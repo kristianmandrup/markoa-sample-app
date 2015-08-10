@@ -1,0 +1,76 @@
+{
+  "name": "markoa-tester",
+  "description": "markoa-tester",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kristianmandrup/markoa-tester",
+  "author": {
+    "name": "Kristian Mandrup",
+    "email": "kmandrup@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kristianmandrup/markoa-tester.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kristianmandrup/markoa-tester/issues"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "engines": {
+    "node": ">= 0.11.0",
+    "npm": ">=1.4.3"
+  },
+  "scripts": {
+    "test": "echo \"No tests\""
+  },
+  "dependencies": {
+    "better-console": "^0.2.4",
+    "del": "^1.2.0",
+    "extend": "^3.0.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-chmod": "^1.2.0",
+    "gulp-clone": "^1.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-copy": "0.0.2",
+    "gulp-flatten": "^0.1.1",
+    "gulp-header": "^1.2.2",
+    "gulp-help": "^1.6.0",
+    "gulp-if": "^1.2.5",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-print": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-rtlcss": "^0.1.4",
+    "gulp-uglify": "^1.2.0",
+    "map-stream": "0.0.6",
+    "markoa": "kristianmandrup/markoa",
+    "require-dot-file": "^0.4.0",
+    "semantic-ui": "^2.0.8",
+    "yamljs": "^0.2.3"
+  },
+  "devDependencies": {
+    "autoprefixer-stylus": "^0.7.1",
+    "axis": "^0.4.2",
+    "fluidity": "^0.2.3",
+    "gulp": "^3.6.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-stylus": "^2.0.6",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.3.4",
+    "jade": "^1.11.0",
+    "jade-marko": "^0.1.1",
+    "jeet": "^6.1.2",
+    "nib": "^1.1.0",
+    "require-dir": "^0.3.0",
+    "rupture": "^0.6.1",
+    "stylus": "^0.52.0",
+    "sugar": "^1.4.1"
+  },
+  "keywords": [
+    "markoa"
+  ]
+}
