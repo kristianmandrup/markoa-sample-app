@@ -44,6 +44,10 @@ Use a specific port (instead of the one auto-detected by Browsersync)
 
 `port: 4005`
 
+BrowserSync starts a small web server. If you’re already using a local web server or need to connect to a live website, you can start BrowserSync as a proxy server. It injects small script into every page which communicates with the server via WebSockets. When an event occurs — such as a file modification or scroll action — the server sends an update notification to all connected devices.
+
+You can enter the “External” address in the location bar of any browser on your network, i.e. http://192.168.1.21:3000. This will load your default page (index.html) and automatically refresh it when the HTML or CSS changes.
+
 Or we could try to set our Markoa port to `3000`
 
 ```bash
