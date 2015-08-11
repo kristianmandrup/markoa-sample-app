@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "better-console": "^0.2.4",
+    "browser-refresh-taglib": "^1.0.3",
     "del": "^1.2.0",
     "extend": "^3.0.0",
     "gulp-autoprefixer": "^2.3.1",

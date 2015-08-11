@@ -73,6 +73,64 @@ if (window.location.port !== '80' && window.location.port !== '') {
 
 http://www.wearejh.com/development/https-support-added-browsersync/
 
+It works in Proxy mode apparently. The problem is that it renders using the `.js` file, not the `.marko` file.
+
+Been looking into using [gulp-marko](https://github.com/viviangledhill/gulp-marko) but it only compiles marko to HTML static files for caching (testing). Could be useful for sure to include as part of dev task!
+
+To precompile templates:
+
+`npm install marko --global`
+
+`markoc apps --clean`
+
+We could build a Gulp transform to do this:
+
+```js
+require('marko/compiler').compileFile(path, function(err, src) {
+    // Do something with the compiled output
+});
+```
+
+Or we could simply use the built in hot reload:
+
+[marko-hot-reload](https://github.com/marko-js-samples/marko-hot-reload)
+
+And the combine with `browser-refresh`
+
+```sh
+npm install browser-refresh --global
+browser-refresh server.js
+```
+
+Then you would use browser-refresh to launch your Node.js app. For example:
+
+```sh
+npm install browser-refresh --global browser-refresh server.js
+```
+
+In addition, you'll need to include the `<browser-refresh>` tag in your main page template as shown below:
+
+```html
+<!doctype html><html> <head> ... </head> <body> ...
+
+  <browser-refresh enabled="true" />
+</body>
+</html>
+```
+
+In addition, you will need to let the browser-refresh process launcher know when your server is ready so that it can trigger a refresh of all web pages at the correct time. This can be done using code similar to the following:
+
+```js
+app.listen(port, function() {
+  console.log('Listening on port %d', port);
+  if (process.send) {
+    process.send('online');
+  }
+});
+```
+
+For more details, please see the docs for the `browser-refresh` module.
+
 ### Semantic UI
 
 Build semantic dist:

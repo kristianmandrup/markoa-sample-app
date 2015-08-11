@@ -4,7 +4,7 @@ let path = require('path');
 
 // TODO: should be default Koa config unless koaApp is passed to createRoutes or start ;)
 let lassoFile = path.join(__dirname, './lasso-config.json');
-let serverOpts = {port: 4005, lassoFile: lassoFile};
+let serverOpts = {port: 4005, lassoFile: lassoFile, debug: true};
 let Server = markoa.Server;
 let koaApp = new Server(serverOpts).init(function(mws) {
   mws.minimal();
