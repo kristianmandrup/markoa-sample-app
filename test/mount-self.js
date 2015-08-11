@@ -8,5 +8,4 @@ let mounter = new markoa.AppMounter(rootPath);
 let apps = ['index'];
 
 // mounting multiple apps on appContainer instance
-mounter.mountApps(apps);
-mounter.appContainer.start();
+mounter.mountApps(apps).start();
