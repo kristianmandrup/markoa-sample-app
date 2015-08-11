@@ -30,7 +30,21 @@ There is now a new sync task `build/tasks/sync.js` we are working on. We have al
 
 We just need to figure out how to configure correctly. Please help out ;)
 
-Apprently we need to use the Browser Sync UI and Get the snippet from BROWSERSYNC_SNIPPET environment variable (usefull to start browser-sync from a build tool like gulp, grunt, etc)
+Apparently we need to use the Browser Sync UI and get the snippet from `BROWSERSYNC_SNIPPET` environment variable and paste it into the HTML of the app (usefull to start `browser-sync` from a build tool like `gulp` etc)
+
+From http://www.browsersync.io/docs/options/
+
+Log the snippet to the console when you're in snippet mode (no proxy/server): `logSnippet: true`
+
+Override host detection if you know the correct IP to use:
+
+`host: "192.168.1.1"`
+
+Use a specific port (instead of the one auto-detected by Browsersync)
+
+`port: 4005`
+
+Or we could try to set our Markoa port to `3000`
 
 ```bash
 [08:06:50] Starting 'sync'...
@@ -48,6 +62,16 @@ Apprently we need to use the Browser Sync UI and Get the snippet from BROWSERSYN
 Perhaps use: [bs-snippet-injector](https://github.com/shakyShane/bs-snippet-injector) ??
 
 Read [this](http://www.shakyshane.com/javascript/nodejs/2014/08/05/browser-sync-snippet/)
+
+Or perhaps we can use this [recipe](https://www.npmjs.com/package/browser-sync-connect)?
+
+```js
+if (window.location.port !== '80' && window.location.port !== '') {
+        browserSyncConnect();
+}
+```
+
+http://www.wearejh.com/development/https-support-added-browsersync/
 
 ### Semantic UI
 
