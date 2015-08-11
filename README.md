@@ -4,17 +4,17 @@ markoa-tester
 Install
 -------
 
-Install `markoa-tester` in a project where you want to mount the app:
-
 ```bash
-$ npm install markoa-tester --save
+git clone git@github.com:kristianmandrup/markoa-sample-app.git
+cd markoa-sample-app
+
 ```
 
 ### Development
 
 `gulp watch` to watch for changes and auto-compile
 
-When updating jade layout run `gulp jade:marko`
+When updating a `layout.jade` file, run `gulp jade:marko` to ensure all marko files compiled to use latest layouts.
 
 ### Run server
 
@@ -24,7 +24,21 @@ For now simply run:
 
 Which will run `mount-self.js` (which should work).
 
-### Auto Reload via Browser Sync
+or simply use npm:
+
+`npm start`
+
+and until we get real tests written...
+
+`npm test`
+
+### Marko Hot Reload
+
+When the serve has been started it should auto reload marko templates
+
+Try changing a `.marko` file, then reload browser! Sweet :)
+
+### WIP: Auto Reload via Browser Sync
 
 There is now a new sync task `build/tasks/sync.js` we are working on. We have also added [koa-browser-sync](https://www.npmjs.com/package/koa-browser-sync) in the Markoa server.
 
