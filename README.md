@@ -1,20 +1,21 @@
 markoa-tester
 =============
 
-Install
--------
+Getting started
+---------------
 
 ```bash
 git clone git@github.com:kristianmandrup/markoa-sample-app.git
 cd markoa-sample-app
-
+npm install
+npm start
 ```
 
 ### Development
 
-`gulp watch` to watch for changes and auto-compile
+`gulp watch` to watch for changes and auto-compile `.jade` and `.styl` files.
 
-When updating a `layout.jade` file, run `gulp jade:marko` to ensure all marko files compiled to use latest layouts.
+Note: After updating a `layout.jade` file, run `gulp jade:marko` to ensure all marko files are compiled to use latest layouts (TODO: make part of `jade watch` task!).
 
 ### Run server
 
@@ -48,126 +49,9 @@ or until we get real tests written...
 
 *should run tests instead :P*
 
-### Marko Hot Reload
-
-When the serve has been started it should auto reload marko templates
-
-Try changing a `.marko` file, then reload browser! Sweet :)
-
-### WIP: Auto Reload via Browser Sync
-
-There is now a new sync task `build/tasks/sync.js` we are working on. We have also added [koa-browser-sync](https://www.npmjs.com/package/koa-browser-sync) in the Markoa server.
-
-We just need to figure out how to configure correctly. Please help out ;)
-
-Apparently we need to use the Browser Sync UI and get the snippet from `BROWSERSYNC_SNIPPET` environment variable and paste it into the HTML of the app (usefull to start `browser-sync` from a build tool like `gulp` etc)
-
-From http://www.browsersync.io/docs/options/
-
-Log the snippet to the console when you're in snippet mode (no proxy/server): `logSnippet: true`
-
-Override host detection if you know the correct IP to use:
-
-`host: "192.168.1.1"`
-
-Use a specific port (instead of the one auto-detected by Browsersync)
-
-`port: 4005`
-
-BrowserSync starts a small web server. If you’re already using a local web server or need to connect to a live website, you can start BrowserSync as a proxy server. It injects small script into every page which communicates with the server via WebSockets. When an event occurs — such as a file modification or scroll action — the server sends an update notification to all connected devices.
-
-You can enter the “External” address in the location bar of any browser on your network, i.e. http://192.168.1.21:3000. This will load your default page (index.html) and automatically refresh it when the HTML or CSS changes.
-
-Or we could try to set our Markoa port to `3000`
-
-```bash
-[08:06:50] Starting 'sync'...
-[08:06:50] Finished 'sync' after 26 ms
-[BS] [info] Proxying: http://localhost:4005
-[BS] Access URLs:
- ------------------------------------
-       Local: http://localhost:3000
-    External: http://192.168.1.8:3000
- ------------------------------------
-          UI: http://localhost:3001
- UI External: http://192.168.1.8:3001
-```
-
-Perhaps use: [bs-snippet-injector](https://github.com/shakyShane/bs-snippet-injector) ??
-
-Read [this](http://www.shakyshane.com/javascript/nodejs/2014/08/05/browser-sync-snippet/)
-
-Or perhaps we can use this [recipe](https://www.npmjs.com/package/browser-sync-connect)?
-
-```js
-if (window.location.port !== '80' && window.location.port !== '') {
-        browserSyncConnect();
-}
-```
-
-http://www.wearejh.com/development/https-support-added-browsersync/
-
-It works in Proxy mode apparently. The problem is that it renders using the `.js` file, not the `.marko` file.
-
-Been looking into using [gulp-marko](https://github.com/viviangledhill/gulp-marko) but it only compiles marko to HTML static files for caching (testing). Could be useful for sure to include as part of dev task!
-
-To precompile templates:
-
-`npm install marko --global`
-
-`markoc apps --clean`
-
-We could build a Gulp transform to do this:
-
-```js
-require('marko/compiler').compileFile(path, function(err, src) {
-    // Do something with the compiled output
-});
-```
-
-Or we could simply use the built in hot reload:
-
-[marko-hot-reload](https://github.com/marko-js-samples/marko-hot-reload)
-
-And the combine with `browser-refresh`
-
-```sh
-npm install browser-refresh --global
-browser-refresh server.js
-```
-
-Then you would use browser-refresh to launch your Node.js app. For example:
-
-```sh
-npm install browser-refresh --global browser-refresh server.js
-```
-
-In addition, you'll need to include the `<browser-refresh>` tag in your main page template as shown below:
-
-```html
-<!doctype html><html> <head> ... </head> <body> ...
-
-  <browser-refresh enabled="true" />
-</body>
-</html>
-```
-
-In addition, you will need to let the browser-refresh process launcher know when your server is ready so that it can trigger a refresh of all web pages at the correct time. This can be done using code similar to the following:
-
-```js
-app.listen(port, function() {
-  console.log('Listening on port %d', port);
-  if (process.send) {
-    process.send('online');
-  }
-});
-```
-
-For more details, please see the docs for the `browser-refresh` module.
-
 ### Semantic UI
 
-Build semantic dist:
+Build semantic distribution files
 
 `cd semantic && gulp build`
 
@@ -177,6 +61,8 @@ In `layout.jade`
 link(rel="stylesheet" type="text/css" href="semantic.min.css")
 script(src="semantic/dist/semantic.min.js")
 ```
+
+Note:Ideally assets should be included via Lasso
 
 ### TODO
 
@@ -188,21 +74,7 @@ script(src="semantic/dist/semantic.min.js")
 
 *Work in Progress (WIP)*
 
-Ideally you should be able to mount the app like this:
-
-```js
-let myApp = require('markoa-tester');
-let apps = ['index'];
-myApp.mountIn(myAppContainer, apps);
-```
-
-You can also use the `mounter.js` directly:
-
-```js
-let apps = ['index', 'projects'];
-let mount = require('./mounter')(appContainer)
-mount(apps);
-```
+Needs to be made much simpler!
 
 ### App file structure
 
@@ -235,9 +107,19 @@ mount(apps);
 
 ### Generating apps
 
+Install slush generator
+
+`npm install -g slush`
+
+Install the slush `markoa` generator!
+
+`npm install slush-markoa`
+
+Generate an app
+
 `slush markoa:app`
 
-This geneator will create an app under apps/[app-name] similar to the default `index` app generated by the default marko generator. Use this generator each time you want to add an app!
+This generator will create an app under `apps/[app-name]` similar to the default`index` app generated by the default `markoa` generator. Tip: Use this generator each time you want to add an app!
 
 ```
 /[app]
