@@ -21,7 +21,7 @@
     "npm": ">=1.4.3"
   },
   "scripts": {
-    "test": "node test",
+    "test": "browser-refresh test",
     "start": "node test"
   },
   "dependencies": {

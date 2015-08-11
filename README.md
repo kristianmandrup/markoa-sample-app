@@ -24,13 +24,29 @@ For now simply run:
 
 Which will run `mount-self.js` (which should work).
 
-or simply use npm:
+### Development mode
+
+Install browser-refresh
+
+`npm install -g browser-refresh`
+
+Then launch application with browser-refresh
+
+`browser-refresh test`
+
+This will ensure that any change to a marko template will cause a browser refresh for instant feedback :)
+
+### Using npm
+
+Start app:
 
 `npm start`
 
-and until we get real tests written...
+or until we get real tests written...
 
 `npm test`
+
+*should run tests instead :P*
 
 ### Marko Hot Reload
 
