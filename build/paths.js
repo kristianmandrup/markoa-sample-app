@@ -14,6 +14,7 @@ module.exports = {
   css: path.join(root.styles, 'css/**/*.css'),
   stylus: path.join(root.styles, '**/*.styl'),
   jade: path.join(root.apps, '**/*.jade'),
+  marko: path.join(root.apps, '**/*.marko'),  
   styles: root.styles,
   stylesDist: path.join(root.output, 'css'),
   output: root.output,

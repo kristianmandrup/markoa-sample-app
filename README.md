@@ -16,6 +16,39 @@ $ npm install markoa-tester --save
 
 When updating jade layout run `gulp jade:marko`
 
+### Run server
+
+For now simply run:
+
+`node test`
+
+Which will run `mount-self.js` (which should work).
+
+### Auto Reload via Browser Sync
+
+There is now a new sync task `build/tasks/sync.js` we are working on. We have also added [koa-browser-sync](https://www.npmjs.com/package/koa-browser-sync) in the Markoa server.
+
+We just need to figure out how to configure correctly. Please help out ;)
+
+Apprently we need to use the Browser Sync UI and Get the snippet from BROWSERSYNC_SNIPPET environment variable (usefull to start browser-sync from a build tool like gulp, grunt, etc)
+
+```bash
+[08:06:50] Starting 'sync'...
+[08:06:50] Finished 'sync' after 26 ms
+[BS] [info] Proxying: http://localhost:4005
+[BS] Access URLs:
+ ------------------------------------
+       Local: http://localhost:3000
+    External: http://192.168.1.8:3000
+ ------------------------------------
+          UI: http://localhost:3001
+ UI External: http://192.168.1.8:3001
+```
+
+Perhaps use: [bs-snippet-injector](https://github.com/shakyShane/bs-snippet-injector) ??
+
+Read [this](http://www.shakyshane.com/javascript/nodejs/2014/08/05/browser-sync-snippet/)
+
 ### Semantic UI
 
 Build semantic dist:

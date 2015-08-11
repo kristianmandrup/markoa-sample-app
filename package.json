@@ -55,6 +55,7 @@
   "devDependencies": {
     "autoprefixer-stylus": "^0.7.1",
     "axis": "^0.4.2",
+    "browser-sync": "^2.8.2",
     "fluidity": "^0.2.3",
     "gulp": "^3.6.2",
     "gulp-sourcemaps": "^1.5.2",
