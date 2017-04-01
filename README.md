@@ -1,6 +1,8 @@
 markoa-tester
 =============
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristianmandrup/markoa-sample-app.svg)](https://greenkeeper.io/)
+
 Getting started
 ---------------
 
